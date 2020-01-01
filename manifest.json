@@ -1,0 +1,25 @@
+{
+    "name": "List Helper",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["./scripts/saveItem.js", "./scripts/editList.js"]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "./html/mainpage.html",
+        "default_title": "View and Manage Lists"
+    },
+    "background": {
+        "scripts": ["./scripts/background.js"]
+    },
+    "browser_action": {
+        "default_icon": "./images/icon.png"
+    },
+    "permissions": [
+        "<all_urls>",
+        "tabs"
+    ]
+}

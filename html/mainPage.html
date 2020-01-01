@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List Helper Main Page</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body class="body">
+        <div id="mainDiv">
+            <h1>List Helper</h1>
+            <!--
+                * Should only be 2 buttons
+                    1. Save Item
+                        A) if you don't have any lists it will open the create page by default
+                        B) otherwise you will select from the lists you already have
+                    2. View / Edit lists
+                * Different themes available
+                * Customize themes and color pallette
+                * put this into github
+                * check different resolutions
+
+                Tips:
+                * content scripts: affect the page of the webpage itself
+                * background scripts: loads when you launch the browser and listens for activity with the browser
+
+            -->
+
+            <br><br><br><br><br>
+            <div class="buttonDiv">
+                <button type="button" id="saveItem" class="dfltbutton">Save Item</button><script src="../scripts/saveItem.js" charset="utf-8"></script><br><br>
+            </div>
+            <div class="buttonDiv">
+                <a href="../html/createList.html"><button class="dfltbutton">Create List</button></a><br><br>
+            </div>
+            <div class="buttonDiv">
+                <a href="../html/listExample.html"><button type="button" id="editList" class="dfltbutton">View List(s)</button></a><br><br>
+            </div>
+            <!-- Button example 
+            <div class="buttonDiv">
+                <button type="button" id="editList" class="dfltbutton">View / Edit List</button><script src="../scripts/editList.js" charset="utf-8"></script><br><br>
+            </div>
+            -->
+        </div>
+    </body>
+</html>
