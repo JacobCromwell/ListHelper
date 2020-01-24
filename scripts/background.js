@@ -1,4 +1,17 @@
-console.log('background console working 7');
+console.log('background script iteration 8');
+
+
+chrome.browserAction.onClicked.addListener(buttonClicked);
+
+function buttonClicked(tab) {
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, function(arrayOfTabs) {
+		var tab = arrayOfTabs[0];
+    let msg = {
+      url: tab.url
+    }
+    chrome.tabs.sendMessage(tab.id, msg);
+  });
+}
 
 /* 1
 chrome.browserAction.onClicked.addListener(buttonClicked);

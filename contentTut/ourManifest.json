@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Content Tutorial",
+    "version": "0.2",
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": ["content.js"]
+      }
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "permissions": [
+        "notifications",
+        "activeTab",
+        "tabs",
+        "activeTab"
+    ],
+    "browser_action": {
+      "default_icon": "./images/icon48.png",
+      "default_title": "Messaging Example"
+    }
+  }

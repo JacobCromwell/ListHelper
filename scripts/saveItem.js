@@ -40,5 +40,5 @@ function notifyBackgroundPage(e) {
   sending.then(handleResponse, handleError);  
 }
 
-document.getElementById("saveItem").addEventListener("click", handleResponse);
+//document.getElementById("saveItem").addEventListener("click", handleResponse);
 //window.addEventListener("click", notifyBackgroundPage);
