@@ -25,20 +25,10 @@ function getTabInfo(tabs) {
   }
 
 // New Code
-function updateElement(message, sender, sendResponse) {
-  console.log('Inside update Element');
+function updateElement() {
   let paragraphs = document.getElementsByTagName('p');
   for (elt of paragraphs) {
-    elt.innerHTML = 'UPDATED p TAG';
+    let secretMsg = 'ZAZAZA'
+    elt.innerHTML = '1 UPDATED p TAG ' + secretMsg;
   }
 }
-
-console.log('updating p tags...')
-let paragraphs = document.getElementsByTagName('p');
-for (elt of paragraphs) {
-  console.log('we have updated ONE p tag');
-  elt.innerHTML = 'UPDATED p TAG';
-}
-console.log('finished updating p tags');
-
-//updateElement();
