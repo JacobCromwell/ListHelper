@@ -1,27 +1,15 @@
-//document.getElementById("saveItem").addEventListener("click", saveItemFunc);
 
-/*
-chrome.runtime.onMessage.addListener(givenTabUrl);
+window.addEventListener('load', function load(event) {
+  var createButton = document.getElementById('saveItem');
+  createButton.addEventListener('click', function () { saveItem(); });
+});
 
-function givenTabUrl(tabUrl, sender, sendResponse){
-  alert('tabUrl = ', tabUrl);
+function saveItem() {
+  console.log('This is where I would save my item, if I had one!!!');
 }
-*/
-
-
-// Receiver
-/* 3
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    if (request.greeting == "hello")
-      sendResponse({farewell: "goodbye"});
-  });
-  */
 
 //document.getElementById("saveItem").addEventListener("click", saveItemFunc);
+/*
 let currentTab = '';
 function handleResponse(message) {
   console.log(`Message from the background script:  ${message.response}`);
@@ -37,8 +25,9 @@ function notifyBackgroundPage(e) {
   var sending = browser.runtime.sendMessage({
     greeting: "Greeting from the content script"
   });
-  sending.then(handleResponse, handleError);  
+  sending.then(handleResponse, handleError);
 }
+*/
 
 //document.getElementById("saveItem").addEventListener("click", handleResponse);
 //window.addEventListener("click", notifyBackgroundPage);

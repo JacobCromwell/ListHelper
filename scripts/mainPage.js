@@ -25,11 +25,15 @@ function getTabInfo(tabs) {
   }
 
 // New Code
-function updateElement() {
+window.addEventListener('load', function load(event) {
+  var createButton = document.getElementById('updateText');
+  createButton.addEventListener('click', function () { getUsers(); });
+});
+
+function updateElement(username) {
   let paragraphs = document.getElementsByTagName('p');
   for (elt of paragraphs) {
-    let secretMsg = 'ZAZAZA'
-    elt.innerHTML = '1 UPDATED p TAG ' + secretMsg;
+    elt.innerHTML = '1 UPDATED p TAG ' + username;
   }
 }
 
@@ -44,6 +48,7 @@ function getUsers() {
     if (request.status >= 200 && request.status < 400) {
       data.forEach(user => {
         console.log(user.username)
+        updateElement(user.username);
       })
     } else {
       console.log('error')
