@@ -4,6 +4,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#listBody {
+    height: 30em;
+    width: 60em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .dfltbutton {
     border: none;
     background-color: #008CBA;
