@@ -1,6 +1,7 @@
 console.log('background script iteration 8');
 
-
+/*
+Working
 chrome.browserAction.onClicked.addListener(buttonClicked);
 
 function buttonClicked(tab) {
@@ -12,6 +13,8 @@ function buttonClicked(tab) {
     chrome.tabs.sendMessage(tab.id, msg);
   });
 }
+*/
+
 
 /* 1
 chrome.browserAction.onClicked.addListener(buttonClicked);

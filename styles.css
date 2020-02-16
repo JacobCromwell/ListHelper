@@ -4,6 +4,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#listBody {
+    height: 30em;
+    width: 60em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .dfltbutton {
     border: none;
     background-color: #008CBA;
@@ -87,12 +93,25 @@ div.el {
 
 div.item {
     display: inline-block;
-    width: 800px;
-    border-style: solid;
-    border-color: black;
+    width: 80em;
+    border-style: groove;
+    border-color: #66CCCC;
+    border-radius: 10px;
+    box-shadow: 2px 4px #666;
+    margin-bottom: 5px;
+}
+
+.itemButton {
+    padding-bottom: 10px;
+    padding-left: 5px;
 }
 
 option {
     font-style: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.allLists {
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
