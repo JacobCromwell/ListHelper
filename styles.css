@@ -84,6 +84,7 @@ div.el {
 .inviteIcon {
     height: 25px;
     width: 25px;
+    padding-left: 15px;
 }
 
 .itemPicture {

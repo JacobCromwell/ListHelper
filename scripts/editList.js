@@ -1,3 +1,8 @@
+/*
+  TODO
+  need to pass in the actual list_id to getItemWithId instead of using hard-coded value
+*/
+
 //document.getElementById("editList").addEventListener("click", getLists);
 async function getItem(url = '') {
     // Default options are marked with *
@@ -11,8 +16,9 @@ async function getItem(url = '') {
   }
   
   function getItemWithId(list_id) {
-    console.log('Getting THEM lists!!!');
-    getItem('http://localhost:3000/item/' + list_id)
+    queryString = 'http://localhost:3000/item/' + list_id;
+    console.log('queryString: ' + queryString);
+    getItem(queryString)
       .then((data) => {
         console.log('response data: ' + data); // JSON data parsed by `response.json()` call
       });
