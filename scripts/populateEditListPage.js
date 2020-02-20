@@ -13,7 +13,17 @@ window.addEventListener('load', function load(event) {
     let populateParagraph = document.getElementById("populateMe");
     let populationString = '';
     for (item of parsedSessionItems) {
-        populationString += item.url;
+        //populationString += item.url;
+        populationString += `
+        <div class="item">
+            <img class="itemPicture" src="../images/tv.png" />
+            <p><b>URL: </b>${item.url}</p>
+            <div class="itemButton">
+                <button class="dfltbutton">Go To Site</button>
+                <button class="dfltbutton">Mark As Purchased</button>
+            </div>
+        </div>
+        `;
     }
     populateParagraph.innerHTML = populationString;
   }
