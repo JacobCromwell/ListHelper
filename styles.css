@@ -94,7 +94,7 @@ div.el {
 
 div.item {
     display: inline-block;
-    width: 80em;
+    width: 60em;
     border-style: groove;
     border-color: #66CCCC;
     border-radius: 10px;
