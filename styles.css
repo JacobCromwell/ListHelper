@@ -92,7 +92,7 @@ div.el {
     width: 100px;
 }
 
-div.item {
+.viewEditItem {
     display: inline-block;
     width: 60em;
     border-style: groove;
@@ -102,15 +102,12 @@ div.item {
     margin-bottom: 5px;
 }
 
-div.itemPurchased {
-    display: inline-block;
-    width: 60em;
-    border-style: groove;
-    border-color: #66CCCC;
-    border-radius: 10px;
-    box-shadow: 2px 4px #666;
-    margin-bottom: 5px;
-    background-color: rgba(0, 153, 51, 0.3);
+.notPurchasedItem {
+    background-color: white;
+}
+
+.purchasedItem {
+    background-color: rgba(0, 153, 51, 0.2);
 }
 
 #purchasedItemsDivider {
