@@ -84,6 +84,7 @@ div.el {
 .inviteIcon {
     height: 25px;
     width: 25px;
+    padding-left: 15px;
 }
 
 .itemPicture {
@@ -91,14 +92,28 @@ div.el {
     width: 100px;
 }
 
-div.item {
+.viewEditItem {
     display: inline-block;
-    width: 80em;
+    width: 60em;
     border-style: groove;
     border-color: #66CCCC;
     border-radius: 10px;
     box-shadow: 2px 4px #666;
     margin-bottom: 5px;
+}
+
+.notPurchasedItem {
+    background-color: white;
+}
+
+.purchasedItem {
+    background-color: rgba(0, 153, 51, 0.2);
+}
+
+#purchasedItemsDivider {
+    color: darkgreen;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .itemButton {
