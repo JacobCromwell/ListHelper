@@ -12,19 +12,38 @@ window.addEventListener('load', function load(event) {
     let parsedSessionItems = getSessionItems(1);
     let populateParagraph = document.getElementById("populateMe");
     let populationString = '';
+    let nonPurchasedItems = '';
+    let purchasedItems = '';
     for (item of parsedSessionItems) {
         //populationString += item.url;
-        populationString += `
-        <div class="item">
-            <img class="itemPicture" src="../images/tv.png" />
-            <p><b>URL: </b>${item.url}</p>
-            <div class="itemButton">
-                <button class="dfltbutton">Go To Site</button>
-                <button class="dfltbutton">Mark As Purchased</button>
-            </div>
-        </div>
-        `;
+        if(item.purchased === false){
+          nonPurchasedItems += `
+          <div class="item">
+              <img class="itemPicture" src="../images/tv.png" />
+              <p><b>URL: </b>${item.url}</p>
+              <div class="itemButton">
+                  <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
+                  <button class="dfltbutton">Mark As Purchased</button>
+              </div>
+          </div>
+          `;
+        } else if(item.purchased === true){
+          if(purchasedItems === ''){
+            purchasedItems += `<p id="purchasedItemsDivider">-------------------Purchased Items-------------------</p>`
+          }
+          purchasedItems += `
+          <div class="itemPurchased">
+              <img class="itemPicture" src="../images/tv.png" />
+              <p><b>URL: </b>${item.url}</p>
+              <div class="itemButton">
+                  <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
+                  <button class="dfltbutton">Not Purchased</button>
+              </div>
+          </div>
+          `;
+        }
     }
+    populationString += nonPurchasedItems + purchasedItems;
     populateParagraph.innerHTML = populationString;
   }
   
