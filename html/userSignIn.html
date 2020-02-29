@@ -14,16 +14,17 @@
 
                 <div class="mainFormOptions">
                 <form action="/action_page.php" class="formText">
-                    UserName: <br><input class="dfltInput" type="text" name="username"><br>
-                    Password: <br><input class="dfltInput" type="text" name="userPassword"><br>
+                    UserName: <br><input class="dfltInput" type="text" name="username" id="loginUsername"><br>
+                    Password: <br><input class="dfltInput" type="text" name="userPassword" id="loginPassword"><br>
                 </form>
                 <div id="footerButtonsBar">
-                <input class="footButtons" type="submit" value="Sign In">
+                <input class="footButtons" type="submit" value="Sign In" id="submitLogin">
+                <script src="../scripts/login.js" charset="utf-8"></script>
                 </div>
 
                 <br><p id="ourOR">OR</p><br>
                 <div class="buttonDiv">
-                    <a href="../html/userCannotLogin.html">Click here if you cannot login...</a><br><br>
+                    <a href="../html/userCannotLogin.html" >Click here if you cannot login...</a><br><br>
                 </div>
                 </div>
 
