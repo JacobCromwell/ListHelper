@@ -32,14 +32,14 @@ function updateElement(data) {
     let populationString = '';
     // Create the html of the page
     if(data.helper_lists.length === 1){
+        sessionStorage.setItem(`HelperListInScope`, data.helper_lists[0].id);
         window.location.href = './listExample.html';
     }else {
         for (helper_list of data.helper_lists) {
             console.log('individual helper list: ' + helper_list);
             populationString += `
             <div>
-                <a href="../html/listExample.html">${helper_list.list_name}</a><br><br>
-                <script src="../scripts/editList.js" charset="utf-8"></script>
+                <a href="../html/listExample.html" onClick="sessionStorage.setItem('HelperListInScope', ${helper_list.id})">${helper_list.list_name}</a><br><br>
             </div>
             `
         }

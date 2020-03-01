@@ -1,10 +1,14 @@
 window.addEventListener('load', function load(event) {
     var createButton = document.getElementById('populateMe');
-    updateElement();
+    let helperListInScopeId = sessionStorage.getItem(`HelperListInScope`);
+    // JRC TODO this is a race condition sometimes the items are not set in the session before updateElement is called
+    getItemWithId(helperListInScopeId);
+    updateElement(helperListInScopeId);
   });
   
-  function updateElement() {
-    let parsedSessionItems = getSessionItems(1);
+  function updateElement(helperListInScopeId) {
+    console.log('updateElement listScopeId: ' + helperListInScopeId)
+    let parsedSessionItems = getSessionItems(helperListInScopeId);
     let populateParagraph = document.getElementById("populateMe");
     let populationString = '';
     let nonPurchasedItems = '';
@@ -39,6 +43,7 @@ window.addEventListener('load', function load(event) {
         }
     }
     populationString += nonPurchasedItems + purchasedItems;
+    populationString += `<a href="mainPage.html"><button class="footButtons">Cancel</button></a>`
     populateParagraph.innerHTML = populationString;
 
     //create the event listeners
@@ -52,7 +57,9 @@ window.addEventListener('load', function load(event) {
     }
   }
   
+  //JRC TODO this can be refactored out
   function getSessionItems(list_id) {
+    console.log('calling getSessionItems with list_id: ' + list_id);
     let sessionItems = sessionStorage.getItem(`listItems_${list_id}`);
     let parsedSessionItems = JSON.parse(sessionItems);
     return parsedSessionItems;
@@ -73,3 +80,28 @@ window.addEventListener('load', function load(event) {
     console.log('element: ' + element);
     element.classList.toggle("purchasedItem");
   }
+
+
+  /*
+  -------------- QUERY DB For List of Items-----------------
+  */
+ async function getItem(url = '') {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  return await response.json(); // parses JSON response into native JavaScript objects
+}
+
+function getItemWithId(helperListInScopeId) {
+queryString = `http://localhost:3000/helper_lists/${helperListInScopeId}/items/`;
+console.log('queryString: ' + queryString);
+getItem(queryString)
+  .then((data) => {
+    //console.log('response data.items: ' + data.items); // JSON data parsed by `response.json()` call
+    sessionStorage.setItem(`listItems_${helperListInScopeId}`, JSON.stringify(data.items));
+  });
+}
