@@ -12,6 +12,9 @@ function saveItem(){
     querying.then(getTabInfo, onError);
 }
 */
+let loggedInUser = JSON.parse(sessionStorage.getItem(`LoggedInUser`));
+console.log('loggedInUser: ' + loggedInUser);
+console.log('loggedInUser.id: ' + loggedInUser.id);
 
 function getTabInfo(tabs) {
     for (let tab of tabs) {
