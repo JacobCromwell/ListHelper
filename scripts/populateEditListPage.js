@@ -1,20 +1,18 @@
 window.addEventListener('load', function load(event) {
     var createButton = document.getElementById('populateMe');
     let helperListInScopeId = sessionStorage.getItem(`HelperListInScope`);
-    // JRC TODO this is a race condition sometimes the items are not set in the session before updateElement is called
     getItemWithId(helperListInScopeId);
-    updateElement(helperListInScopeId);
   });
   
-  function updateElement(helperListInScopeId) {
-    console.log('updateElement listScopeId: ' + helperListInScopeId)
-    let parsedSessionItems = getSessionItems(helperListInScopeId);
+  function updateElement(sessionItems) {
+    //console.log('updateElement listScopeId: ' + helperListInScopeId)
+    //let parsedSessionItems = getSessionItems(helperListInScopeId);
     let populateParagraph = document.getElementById("populateMe");
     let populationString = '';
     let nonPurchasedItems = '';
     let purchasedItems = '';
     // Create the html of the page
-    for (item of parsedSessionItems) {
+    for (item of sessionItems) {
         if(item.purchased === false){
           nonPurchasedItems += `
           <div class="viewEditItem notPurchasedItem" id=${item.id}>
@@ -47,7 +45,7 @@ window.addEventListener('load', function load(event) {
     populateParagraph.innerHTML = populationString;
 
     //create the event listeners
-    for(item of parsedSessionItems){
+    for(item of sessionItems){
       console.log('itemId for eventListenerCreation: ' + item.id);
       if(item.purchased === false){
         document.getElementById(`markAsPurchasedButton${item.id}`).addEventListener("click", function() {markItemAsPurchased(item.id)});
@@ -55,14 +53,6 @@ window.addEventListener('load', function load(event) {
         //document.getElementById(`markItemAsNOTPurchased${item.id}`).addEventListener("click", markItemAsNOTPurchased(item.id));
       }
     }
-  }
-  
-  //JRC TODO this can be refactored out
-  function getSessionItems(list_id) {
-    console.log('calling getSessionItems with list_id: ' + list_id);
-    let sessionItems = sessionStorage.getItem(`listItems_${list_id}`);
-    let parsedSessionItems = JSON.parse(sessionItems);
-    return parsedSessionItems;
   }
 
   /*
@@ -103,5 +93,6 @@ getItem(queryString)
   .then((data) => {
     //console.log('response data.items: ' + data.items); // JSON data parsed by `response.json()` call
     sessionStorage.setItem(`listItems_${helperListInScopeId}`, JSON.stringify(data.items));
+    updateElement(data.items);
   });
 }
