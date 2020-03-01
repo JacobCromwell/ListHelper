@@ -4,6 +4,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#loginSnackbar {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .mainFormOptions {
     border-style: groove;
     border-color: #66CCCC;
