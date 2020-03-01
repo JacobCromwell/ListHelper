@@ -91,7 +91,7 @@ function getItemWithId(helperListInScopeId) {
   console.log('queryString: ' + queryString);
   getItem(queryString)
     .then((data) => {
-      sessionStorage.setItem(`listItems_${helperListInScopeId}`, JSON.stringify(data.items));
+      //sessionStorage.setItem(`listItems_${helperListInScopeId}`, JSON.stringify(data.items));
       updateElement(data.items);
     });
 }
