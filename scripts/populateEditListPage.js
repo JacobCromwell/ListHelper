@@ -1,9 +1,13 @@
+let loggedInUser = JSON.parse(sessionStorage.getItem(`LoggedInUser`));
+let helperListInScopeId = sessionStorage.getItem(`HelperListInScope`);
+
 window.addEventListener('load', function load(event) {
-  let helperListInScopeId = sessionStorage.getItem(`HelperListInScope`);
-  getItemWithId(helperListInScopeId);
+  //let helperListInScopeId = sessionStorage.getItem(`HelperListInScope`);
+  getHelperListsWithId();
+  //getItemWithId(helperListInScopeId);
 });
 
-function updateElement(sessionItems) {
+function updateItems(sessionItems) {
   let populateParagraph = document.getElementById("populateMe");
   let populationString = '';
   let nonPurchasedItems = '';
@@ -72,6 +76,53 @@ function markItemAsNOTPurchased(itemId) {
 // JRC TODO all of these calls to the API should be in a separate service
 /*
 -------------- QUERY DB GET Helper List Items-----------------
+user/${id}/helper_lists/
+--------------------------------------------------------------
+*/
+async function getHelperLists(url = '') {
+  const response = await fetch(url, {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  });
+  return await response.json();
+}
+
+function getHelperListsWithId() {
+  console.log('userId: ' + loggedInUser.id);
+  queryString = `http://localhost:3000/users/${loggedInUser.id}/helper_lists/`;
+  console.log('queryString: ' + queryString);
+  getHelperLists(queryString)
+      .then((data) => {
+          console.log('response data: ' + data);
+          updateAllHelperLists(data);
+          getItemWithId(helperListInScopeId);
+      });
+}
+
+function updateAllHelperLists(data) {
+  let populateDiv = document.getElementById("allHelperLists");
+  let populationString = '';
+  // Create the html of the page
+  if(data.helper_lists.length === 1){
+      sessionStorage.setItem(`HelperListInScope`, data.helper_lists[0].id);
+      window.location.href = './listExample.html';
+  }else {
+      for (helper_list of data.helper_lists) {
+          console.log('individual helper list: ' + helper_list);
+          populationString += `
+          <div>
+              <a href="../html/listExample.html" onClick="sessionStorage.setItem('HelperListInScope', ${helper_list.id})">${helper_list.list_name}</a><br><br>
+          </div>
+          `
+      }
+      populateDiv.innerHTML = populationString;
+  }
+}
+
+/*
+-------------- QUERY DB GET Helper List Items-----------------
 helper_lists/${helperListInScopeId}/items/
 --------------------------------------------------------------
 */
@@ -92,7 +143,7 @@ function getItemWithId(helperListInScopeId) {
   getItem(queryString)
     .then((data) => {
       //sessionStorage.setItem(`listItems_${helperListInScopeId}`, JSON.stringify(data.items));
-      updateElement(data.items);
+      updateItems(data.items);
     });
 }
 
@@ -101,3 +152,4 @@ function getItemWithId(helperListInScopeId) {
 helper_lists/${helperListInScopeId}/items/
 ----------------------------------------------------------------
 */
+
