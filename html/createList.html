@@ -7,31 +7,29 @@
     <body>
         <div id="mainDiv">
             <h1>Create List</h1>
-
-            <!--
-                * Need to save the user's choices
-            -->
+            <h2 id="createListSnackbar"></h2>
 
             <br><br><br><br><br>
             <div class="clInputs">
 
                 <form action="/action_page.php">
-                    List Name: <input class="dfltInput" type="text" name="name"><br>
+                    List Name: <input id="inputListName" class="dfltInput" type="text" name="name"><br>
                     <!-- 
                     Amazon had only 2 choices you or someone else
                     we could do things like [friend, company, family, etc] but for now I think that complicates things
                     Who is this list for: <input class="dfltInput" type="text" name="listFor"><br>
                     -->
-                    list privacy: <select class="dfltInput">
+                    list privacy: <select id="inputPrivateFlag" class="dfltInput">
                         <option value="private">Private</option>
                         <option value="public">Public</option>
                       </select><br>
-                    list type: <br><select class="dfltInput">
+                    list type: <br><select id="inputListType" class="dfltInput">
                         <option value="shopping">Shopping List</option>
                         <option value="wish">Wish List</option>
                       </select><br>
                 </form> 
-                <a href="mainPage.html"><button class="footButtons">Cancel</button></a><input class="footButtons" type="submit" value="Submit">    
+                <a href="mainPage.html"><button class="footButtons">Cancel</button></a><input id="submitList" class="footButtons" type="submit" value="Submit">
+                <script src="../scripts/createList.js" charset="utf-8"></script>
             </div>
             
         </div>
