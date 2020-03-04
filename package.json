@@ -1,0 +1,19 @@
+{
+  "name": "list-helper",
+  "version": "1.0.0",
+  "description": "A browser extension that helps people create and share lists",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobCromwell/ListHelper.git"
+  },
+  "author": "Jacob Cromwell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacobCromwell/ListHelper/issues"
+  },
+  "homepage": "https://github.com/JacobCromwell/ListHelper#readme"
+}
