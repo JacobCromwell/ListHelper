@@ -16,28 +16,34 @@ function updateItems(sessionItems) {
   for (item of sessionItems) {
     if (item.purchased === false) {
       nonPurchasedItems += `
-          <div class="viewEditItem notPurchasedItem" id=${item.id}>
-              <img class="itemPicture" src="../images/tv.png" />
-              <p><b>URL: </b>${item.url}</p>
-              <div class="itemButton">
-                  <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
-                  <button class="dfltbutton" id="markAsPurchasedButton${item.id}">Mark As Purchased</button>
-              </div>
+        <div class="viewEditItem notPurchasedItem" id=${item.id}>
+          <img class="itemPicture" src="${item.img_url}" />
+          <p><b>Title: </b>${item.title}</p>
+          <p>${item.description}</p>
+          <p><b>URL: </b>${item.url}</p>
+          <div class="itemButton">
+              <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
+              <button class="dfltbutton" id="markAsPurchasedButton${item.id}">Mark As Purchased</button>
+              <button class="dfltbutton" id="deleteItem${item.id}">Delete</button>
           </div>
-          `;
+        </div>
+      `;
     } else if (item.purchased === true) {
       if (purchasedItems === '') {
         purchasedItems += `<p id="purchasedItemsDivider">-------------------Purchased Items-------------------</p>`
       }
       purchasedItems += `
-          <div class="viewEditItem purchasedItem" id=${item.id}>
-              <img class="itemPicture" src="../images/tv.png" />
-              <p><b>URL: </b>${item.url}</p>
-              <div class="itemButton">
-                  <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
-                  <button class="dfltbutton" >Not Purchased</button>
-              </div>
+        <div class="viewEditItem notPurchasedItem" id=${item.id}>
+          <img class="itemPicture" src="${item.img_url}" />
+          <p><b>Title: </b>${item.title}</p>
+          <p>${item.description}</p>
+          <p><b>URL: </b>${item.url}</p>
+          <div class="itemButton">
+              <a href="${item.url}"><button class="dfltbutton">Go To Site</button></a>
+              <button class="dfltbutton" id="markAsPurchasedButton${item.id}">Mark As Purchased</button>
+              <button class="dfltbutton" id="deleteItem${item.id}">Delete</button>
           </div>
+        </div>
           `;
     }
   }
@@ -107,13 +113,13 @@ function updateAllHelperLists(data) {
   // Create the html of the page
   if(data.helper_lists.length === 1){
       sessionStorage.setItem(`HelperListInScope`, data.helper_lists[0].id);
-      window.location.href = './listExample.html';
+      window.location.href = './viewListPage.html';
   }else {
       for (helper_list of data.helper_lists) {
           console.log('individual helper list: ' + helper_list);
           populationString += `
           <div>
-              <a href="../html/listExample.html" onClick="sessionStorage.setItem('HelperListInScope', ${helper_list.id})">${helper_list.list_name}</a><br><br>
+              <a href="../html/viewListPage.html" onClick="sessionStorage.setItem('HelperListInScope', ${helper_list.id})">${helper_list.list_name}</a><br><br>
           </div>
           `
       }
