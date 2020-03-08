@@ -49,6 +49,14 @@
     width: 100%;
 }
 
+.redirectUserSignIn {
+    border-style: groove;
+    border-color: #66CCCC;
+    height: 2em;
+    align-items: center;
+    width: 100%;
+} 
+
 .footButtons:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     opacity: 1;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../styles/signin.css">
+    </head>
+    <body class="body">
+        <div id="mainDiv">
+            <h2>Register new Account</h2>
+            <h2 id="loginSnackbar"></h2>
+            <br><br>
+            <div class="clInputs">
+
+                <div class="mainFormOptions">
+                <form action="/action_page.php" class="formText">
+                    UserName: <br><input class="dfltInput" type="text" name="username" id="registerUsername"><br>
+                    First Name: <br><input class="dfltInput" type="text" name="fname" id="registerFirstname"><br>
+                    Last Name: <br><input class="dfltInput" type="text" name="lname" id="registerLastname"><br>
+                    email: <br><input class="dfltInput" type="text" name="email" id="registerEmailname"><br>
+                    Password: <br><input class="dfltInput" type="text" name="password" id="registerPassword"><br>
+                </form>
+                <div>
+                    <h2>captcha here</h2>
+                </div>
+                <div id="footerButtonsBar">
+                <input class="footButtons" type="submit" value="Sign Up" id="submitRegistration">
+                <script src="../scripts/userRegister.js" charset="utf-8"></script>
+                </div>
+
+                <br><p id="ourOR">OR</p><br>
+                <div class="buttonDiv">
+                    <a href="../html/userCannotLogin.html" >Click here if you cannot login...</a><br><br>
+                </div>
+                </div>
+
+                <br>
+                <div class="redirectUserSignIn">Have an account? <a href="../html/userSignIn.html">Login...</a></div>
+            </div>
+        </div>
+    </body>
+</html>
